@@ -1,0 +1,105 @@
+{
+  "project_info": {
+    "project_number": "50166974790",
+    "project_id": "todolist-21c26",
+    "storage_bucket": "todolist-21c26.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:50166974790:android:31e86aa33d941bed94bd47",
+        "android_client_info": {
+          "package_name": "com.example.todo_firebase_bloc"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMkbPWU3d_zqqQILrxd07HmOys2Y6mrAI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:50166974790:android:569fa619a458b8c394bd47",
+        "android_client_info": {
+          "package_name": "com.example.todo_firebase_bloc_1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMkbPWU3d_zqqQILrxd07HmOys2Y6mrAI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:50166974790:android:a9fd57073d27271894bd47",
+        "android_client_info": {
+          "package_name": "com.example.todo_firebase_freezed_architecture"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMkbPWU3d_zqqQILrxd07HmOys2Y6mrAI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:50166974790:android:5bdbd3e3c646267394bd47",
+        "android_client_info": {
+          "package_name": "com.example.todo_freezed_firebase"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMkbPWU3d_zqqQILrxd07HmOys2Y6mrAI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:50166974790:android:b8674ef2a9944cad94bd47",
+        "android_client_info": {
+          "package_name": "com.example.todo_freezed_firebase1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMkbPWU3d_zqqQILrxd07HmOys2Y6mrAI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
