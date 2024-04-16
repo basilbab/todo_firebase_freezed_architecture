@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo_firebase_freezed_architecture/application/todo/todo_bloc.dart';
@@ -9,6 +10,7 @@ class ScreenTodo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     BlocProvider.of<TodoBloc>(context).add(const TodoEvent.loadTask());
 
     String index = '';
@@ -46,13 +48,14 @@ class ScreenTodo extends StatelessWidget {
                                   return Row(
                                     children: [
                                       Expanded(
-                                          child: TextField(
-                                        controller: todoController,
-                                        decoration: InputDecoration(
-                                            border: OutlineInputBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(15))),
-                                      )),
+                                        child:TextField(
+                                          controller: todoController,
+                                          decoration: InputDecoration(
+                                              border: OutlineInputBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(15))),
+                                        )
+                                      ),
                                       const SizedBox(
                                         width: 10,
                                       ),
@@ -73,20 +76,20 @@ class ScreenTodo extends StatelessWidget {
                                         onPressed: () async {
                                           if (editSave.value == false) {
                                             BlocProvider.of<TodoBloc>(context)
-                                                .add(TodoEvent.addTodo(TodoModel(
-                                                    id: '0',
-                                                    taskName:
-                                                        'todoController.text',
-                                                    status: '0')));
+                                                .add(TodoEvent.addTodo(
+                                                    TodoModel(
+                                                        id: '0',
+                                                        taskName:
+                                                            todoController.text,
+                                                        status: '0')));
                                           } else {
                                             editSave.value = false;
-                                             BlocProvider.of<TodoBloc>(context)
-                                    .add(TodoEvent.editTask(
-                                  todoController.text,
-                                  status.value,
-                                  index,
-                                ));
-
+                                            BlocProvider.of<TodoBloc>(context)
+                                                .add(TodoEvent.editTask(
+                                              todoController.text,
+                                              status.value,
+                                              index,
+                                            ));
                                           }
                                         },
                                         style: const ButtonStyle(

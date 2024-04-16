@@ -45,18 +45,26 @@ class TodoServiceImplementation implements SaveTodoService {
       QuerySnapshot querySnapshot =
           await firestore.collection('todoList').get();
 
-      for (var doc in querySnapshot.docs) {
-        Map<String, dynamic> todoData = (doc.data() as Map<String, dynamic>);
-        TodoModel todo = TodoModel(
+      // for (var doc in querySnapshot.docs) {
+      //   Map<String, dynamic> todoData = (doc.data() as Map<String, dynamic>);
+      //   TodoModel todo = TodoModel(
+      //     id: doc.id,
+      //     taskName: todoData['taskName'] ?? '',
+      //     status: todoData['status'] ?? '',
+      //   );
+      //   todoUpdatedList.add(todo);
+      // }
+      List<TodoModel> todoList = querySnapshot.docs.map((doc) {
+        return TodoModel(
           id: doc.id,
-          taskName: todoData['taskName'] ?? '',
-          status: todoData['status'] ?? '',
+          taskName:
+              doc['taskName'] ?? '', // Adjust this based on your field name
+          status: doc['status'] ?? '', // Adjust this based on your field name
         );
-        todoUpdatedList.add(todo);
-      }
+      }).toList();
       //todoList.sort((a, b) => a.status.compareTo(b.status));
-      //print(todoList);
-      return (right(todoUpdatedList));
+
+      return (right(todoList));
     } catch (_) {
       return (const Left(MainFailure.serverFailure()));
     }
@@ -66,6 +74,7 @@ class TodoServiceImplementation implements SaveTodoService {
   Future<Either<MainFailure, List<TodoModel>>> deleteTask(String docId) async {
     try {
       FirebaseFirestore db = FirebaseFirestore.instance;
+
       await db.collection('todoList').doc(docId).delete().then((_) async {
         todoUpdatedList.clear();
         final FirebaseFirestore firestore = FirebaseFirestore.instance;
@@ -117,22 +126,25 @@ class TodoServiceImplementation implements SaveTodoService {
       });
       return (right(todoUpdatedList));
     } catch (_) {
-       return (const Left(MainFailure.serverFailure()));
+      return (const Left(MainFailure.serverFailure()));
     }
   }
-  
+
   @override
-  Future<Either<MainFailure, List<TodoModel>>> editTask(String taskName, String status, String docId) async{
-     try {
-     
-       FirebaseFirestore db = FirebaseFirestore.instance;
-       Map<String, dynamic> updatedTask = {
-          'taskName': taskName,
-          'status': status 
-        };
-        await db.collection('todoList').doc(docId).update(updatedTask).then((_)async{
-         
-           todoUpdatedList.clear();
+  Future<Either<MainFailure, List<TodoModel>>> editTask(
+      String taskName, String status, String docId) async {
+    try {
+      FirebaseFirestore db = FirebaseFirestore.instance;
+      Map<String, dynamic> updatedTask = {
+        'taskName': taskName,
+        'status': status
+      };
+      await db
+          .collection('todoList')
+          .doc(docId)
+          .update(updatedTask)
+          .then((_) async {
+        todoUpdatedList.clear();
         final FirebaseFirestore firestore = FirebaseFirestore.instance;
         QuerySnapshot querySnapshot =
             await firestore.collection('todoList').get();
@@ -147,8 +159,8 @@ class TodoServiceImplementation implements SaveTodoService {
         }
       });
       return (right(todoUpdatedList));
-     } catch (_) {
-        return (const Left(MainFailure.serverFailure()));
-     }
+    } catch (_) {
+      return (const Left(MainFailure.serverFailure()));
+    }
   }
 }

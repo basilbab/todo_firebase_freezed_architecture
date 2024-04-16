@@ -5,6 +5,7 @@ import 'package:todo_firebase_freezed_architecture/application/todo/todo_bloc.da
 import 'package:todo_firebase_freezed_architecture/core/di/injectable.dart';
 import 'package:todo_firebase_freezed_architecture/firebase_options.dart';
 import 'package:todo_firebase_freezed_architecture/presentation/todo_home.dart';
+import 'package:todo_firebase_freezed_architecture/presentation/todo_home_updated.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -15,19 +16,11 @@ Future<void> main() async {
   runApp(const MainApp());
 }
 
-class MainApp extends StatefulWidget {
+class MainApp extends StatelessWidget {
   const MainApp({super.key});
 
-  @override
-  State<MainApp> createState() => _MainAppState();
-}
-
-class _MainAppState extends State<MainApp> {
-  @override
-  void initState() {
-    loadTask();
-    super.initState();
-  }
+ 
+  
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +30,5 @@ class _MainAppState extends State<MainApp> {
     );
   }
 
-  Future<void> loadTask() async {
-  //  BlocProvider.of<TodoBloc>(context).add(const TodoEvent.loadTask());
-  }
+ 
 }

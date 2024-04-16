@@ -30,8 +30,9 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
        todoAction.fold((MainFailure f){
         emit(const TodoState(isLoading: false, isError: true,));
        },
-        (todoupdateList){
-          emit(TodoState(isLoading: false, isError: false, todoList: todoupdateList));
+        (List<TodoModel> l){
+        
+          emit(TodoState(isLoading: false, isError: false, todoList: l));
         });
      
     });
